@@ -1,3 +1,0 @@
-﻿#include "FactoryPreEarlyLoadingScreenModule.h"
-
-IMPLEMENT_GAME_MODULE(FFactoryPreEarlyLoadingScreenModule, FactoryPreEarlyLoadingScreen);
