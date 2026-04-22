@@ -1,80 +1,40 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-namespace UnrealBuildTool.Rules
+using UnrealBuildTool;
+
+public class OpenXRHMD : ModuleRules
 {
-	public class OpenXRHMD : ModuleRules
-	{
-		public OpenXRHMD(ReadOnlyTargetRules Target) : base(Target)
-        {
-			PublicIncludePathModuleNames.AddRange(
-				new string[]
-				{
-					"OpenXR"
-				}
-				);
+    public OpenXRHMD(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PrivateIncludePaths.Add("Private");
 
-			PublicDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"HeadMountedDisplay",
-					"XRBase",
-				}
-				);
-
-			PrivateDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"Core",
-					"CoreUObject",
-					"Engine",
-                    "BuildSettings",
-                    "InputCore",
-					"RHI",
-					"RenderCore",
-					"Renderer",
-					"RenderCore",
-                    "Slate",
-                    "SlateCore",
-					"AugmentedReality",
-					"EngineSettings",
-				}
-				);
-
-			if (Target.bBuildEditor == true)
+        PublicDependencyModuleNames.AddRange(
+            new string[]
             {
-				PrivateDependencyModuleNames.Add("EditorFramework");
-                PrivateDependencyModuleNames.Add("UnrealEd");
-			}
-
-            if (Target.Platform == UnrealTargetPlatform.Win64)
-            {
-                PrivateDependencyModuleNames.AddRange(new string[] {
-					"D3D11RHI",
-					"D3D12RHI"
-				});
-
-                AddEngineThirdPartyPrivateStaticDependencies(Target, "DX11", "DX12");
+                "Core",
+                "CoreUObject",
+                "Engine",
+                "HeadMountedDisplay",
+                "XRBase",
+                "RenderCore",
+                "Renderer",
+                "Slate",
+                "SlateCore",
+                "AugmentedReality",
+                "EngineSettings"
             }
+        );
 
-            if (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Android)
+        PrivateDependencyModuleNames.AddRange(
+            new string[]
             {
-                PrivateDependencyModuleNames.Add("OpenGLDrv");
+                "RHI",
+                "BuildSettings"
+            }
+        );
 
-                AddEngineThirdPartyPrivateStaticDependencies(Target, "OpenGL");
-			}
-
-			if (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Android  
-			    || Target.IsInPlatformGroup(UnrealPlatformGroup.Linux))
-            {
-                PrivateDependencyModuleNames.Add("VulkanRHI");
-
-                AddEngineThirdPartyPrivateStaticDependencies(Target, "Vulkan");
-			}
-
-			if (Target.Platform == UnrealTargetPlatform.Android)
-			{
-				PrivateDependencyModuleNames.Add("OculusOpenXRLoader");
-			}
-		}
-	}
+        // === REQUIRED FOR UE 5.3.2-CSS ===
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        PrivatePCHHeaderFile = "Private/Widgets/ProjectedResultColumn.h";
+    }
 }

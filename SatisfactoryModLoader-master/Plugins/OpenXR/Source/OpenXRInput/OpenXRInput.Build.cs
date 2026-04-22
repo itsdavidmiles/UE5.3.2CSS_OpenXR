@@ -15,26 +15,30 @@ namespace UnrealBuildTool.Rules
                 {
                     "Core",
                     "CoreUObject",
-					"ApplicationCore",
+                    "ApplicationCore",
                     "Engine",
                     "InputDevice",
                     "InputCore",
                     "HeadMountedDisplay",
-					"XRBase",
+                    "XRBase",
                     "OpenXRHMD",
                 }
-                );
+            );
 
-			PublicDependencyModuleNames.Add("EnhancedInput");
+            PublicDependencyModuleNames.Add("EnhancedInput");
 
-			AddEngineThirdPartyPrivateStaticDependencies(Target, "OpenXR");
+            AddEngineThirdPartyPrivateStaticDependencies(Target, "OpenXR");
 
             if (Target.bBuildEditor == true)
             {
-				PrivateDependencyModuleNames.Add("EditorFramework");
+                PrivateDependencyModuleNames.Add("EditorFramework");
                 PrivateDependencyModuleNames.Add("UnrealEd");
-				PrivateDependencyModuleNames.Add("InputEditor");
-			}
+                PrivateDependencyModuleNames.Add("InputEditor");
+            }
+
+            // === REQUIRED FOR UE 5.3.2-CSS ===
+            PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+            PrivatePCHHeaderFile = "Private/OpenXRInput.h";
         }
     }
 }

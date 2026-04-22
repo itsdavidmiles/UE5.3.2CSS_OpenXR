@@ -4,17 +4,21 @@ using UnrealBuildTool;
 
 public class OpenXREditor : ModuleRules
 {
-	public OpenXREditor(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PrivateDependencyModuleNames.AddRange(
-			new string[] {
-				"Core",
-				"CoreUObject",
-				"EditorFramework",
-				"UnrealEd",
-				"OpenXRHMD",
-				"OpenXRInput"
-			}
-		);
-	}
+    public OpenXREditor(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PrivateDependencyModuleNames.AddRange(
+            new string[] {
+                "Core",
+                "CoreUObject",
+                "EditorFramework",
+                "UnrealEd",
+                "OpenXRHMD",
+                "OpenXRInput"
+            }
+        );
+
+        // === REQUIRED FOR UE 5.3.2-CSS ===
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        PrivatePCHHeaderFile = "Private/Widgets/ProjectedResultColumn.h";
+    }
 }
