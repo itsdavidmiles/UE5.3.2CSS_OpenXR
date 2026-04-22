@@ -19,6 +19,6 @@ public class OpenXREditor : ModuleRules
 
         // === REQUIRED FOR UE 5.3.2-CSS ===
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        PrivatePCHHeaderFile = "Private/Widgets/ProjectedResultColumn.h";
+        PrivatePCHHeaderFile = "Private/OpenXREditorModule.h";   // Using a header that actually exists
     }
 }

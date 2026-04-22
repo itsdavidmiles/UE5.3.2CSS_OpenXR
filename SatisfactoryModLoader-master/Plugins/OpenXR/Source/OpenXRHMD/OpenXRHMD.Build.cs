@@ -6,9 +6,7 @@ public class OpenXRHMD : ModuleRules
 {
     public OpenXRHMD(ReadOnlyTargetRules Target) : base(Target)
     {
-        PrivateIncludePaths.Add("Private");
-
-        PublicDependencyModuleNames.AddRange(
+        PrivateDependencyModuleNames.AddRange(
             new string[]
             {
                 "Core",
@@ -21,13 +19,7 @@ public class OpenXRHMD : ModuleRules
                 "Slate",
                 "SlateCore",
                 "AugmentedReality",
-                "EngineSettings"
-            }
-        );
-
-        PrivateDependencyModuleNames.AddRange(
-            new string[]
-            {
+                "EngineSettings",
                 "RHI",
                 "BuildSettings"
             }
@@ -35,6 +27,6 @@ public class OpenXRHMD : ModuleRules
 
         // === REQUIRED FOR UE 5.3.2-CSS ===
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        PrivatePCHHeaderFile = "Private/Widgets/ProjectedResultColumn.h";
+        PrivatePCHHeaderFile = "Private/OpenXRHMD.h";
     }
 }
