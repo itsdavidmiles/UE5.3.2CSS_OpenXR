@@ -21,7 +21,7 @@ namespace UnrealBuildTool.Rules
                     "InputCore",
                     "HeadMountedDisplay",
                     "XRBase",
-                    "OpenXRHMD",
+                    "OpenXRHMD",        // ← This is the correct module name
                 }
             );
 
