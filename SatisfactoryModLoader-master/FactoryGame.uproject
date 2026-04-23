@@ -70,9 +70,14 @@
 	],
 	"Plugins": [
 		{
-        		"Name": "OpenXR",
-        		"Enabled": false
-    		},
+			"Name": "OpenXR",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Linux",
+				"Android"
+			]
+		},
 		{
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
